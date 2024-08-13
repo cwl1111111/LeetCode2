@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class SuanFa {
     public static void main(String[] args) {
-        int[] arr = {3,3,3,3,2};
-        test6(arr,0,4);
+        int[] arr = {3,2,1,5,6,4};
+        test6(arr,0,5);
+        for (int i : arr) {
+            System.out.println(i);
+        }
 
     }
     public static void test1(){
@@ -63,10 +66,10 @@ public class SuanFa {
             System.out.println(arr[i]);
         }
     }
-    public static void test4(){
+    public static void test4(){      //插入排序
         int startNum =-1;
         int[] arr = {1,5,552,478,1,2,8,1,2,68,1,5,9,45,7};
-        for (int i = 0; i < arr.length-1; i++) {
+        for (int i = 0; i < arr.length-1; i++) {      //找到不顺序的第一个节点
             if(arr[i]>arr[i+1]){
                 startNum = i+1;
                 break;
@@ -74,12 +77,13 @@ public class SuanFa {
         }
         for (int i = startNum; i < arr.length; i++) {
             int j = i;
-            while(j>0 && arr[j] < arr[j-1]){
+            while(j>0 && arr[j] < arr[j-1]){            //如果前面的数比他大，则交换位置
                 int temp = arr[j];
                 arr[j] = arr[j-1];
                 arr[j-1] = temp;
                 j--;
-        }}
+            }
+        }
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
@@ -93,7 +97,7 @@ public class SuanFa {
 
         }
     }
-    public static void test6(int[] arr, int left, int right) {
+    public static void test6(int[] arr, int left, int right) { //快速排序
 
         if(left>right){
             return;
@@ -101,6 +105,7 @@ public class SuanFa {
         int start = left;
         int end = right;
         int centre = left;
+
         while(start<end){
             while(arr[end]>=arr[centre]&&start<end){
                 end--;
@@ -118,11 +123,9 @@ public class SuanFa {
         arr[centre] = arr[end];
         arr[end] = temp;
 
-        test6(arr,left,end-1);
+        test6(arr,left,end-1);    //此时end已经到了中间
         test6(arr,end+1,right);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+
 
     }
 
